@@ -1,0 +1,39 @@
+npm create vite@latest client
+
+then we install talwind vite
+npm install -D tailwindcss postcss autoprefixer
+
+npx tailwindcss init -p
+this cmd give config file
+then it give tailwind.config.js file and postcss.config.js
+then we delete all data from tailwind.config.js and add from tailwind vite site
+
+then we remove all content from index.css file and add from site
+we delete app.css bcoz we use tailwindcss
+
+delete assets insite file and vite.svg
+
+then we install extention es7 react,console.ninja,preetier,tailwindcss
+then we connect with git hub cmd 1> git init
+                                 2> git add .
+                                 3> git commit -m""
+ then wwe create new repo
+ and connect with github
+
+ use rfc for react boiler plate   
+
+
+ .............header.....................
+
+ for search we write it in form tag
+ use max-w-6xl for width
+ mx-auto for margin auto correct
+ p-3 for padding 
+
+.............after connect mongo we connect user model
+
+(timestamp) is used to save time and update time of users
+
+..hten create api route
+
+re +enter to restart mongo
