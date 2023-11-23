@@ -37,3 +37,6 @@ then we connect with git hub cmd 1> git init
 ..hten create api route
 
 re +enter to restart mongo
+ 
+ ..........res.status(500)..means error happing in sserver
+ ....... then we create a middleware and function to handle possible error

@@ -3,4 +3,5 @@ export const test=(req,res)=>{
         message:"hiiiiiiiiiiii"
     });
 }
+
 //this is api routing
