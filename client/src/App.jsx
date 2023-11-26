@@ -6,10 +6,11 @@ import Profile from "./pages/Profile.jsx"
 import SignIn from "./pages/SignIn.jsx"
 import SignUp from "./pages/signUp.jsx"
 import Header from "./components/header"
-import PrivateRoute from ""
+import PrivateRoute from './components/privateRoute.jsx'
 import CreateListing from './pages/CreateListing.jsx'
 export default function App() {
-  return( <BrowserRouter>
+  return( 
+  <BrowserRouter>
  
   <Header/>
   <Routes>
