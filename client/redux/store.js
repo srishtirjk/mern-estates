@@ -18,6 +18,6 @@ export const store = configureStore({
   middleware:(getDefaultMiddleware)=>getDefaultMiddleware({
     serializableCheck:false,
     //in serializablecheck we can put variable in not a serial form
-  })
-})
+  }),
+});
 export  const  persistor = persistStore(store)

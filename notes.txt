@@ -27,6 +27,7 @@ then we connect with git hub cmd 1> git init
 
  for search we write it in form tag
  use max-w-6xl for width
+ mt-6 gor margin top
  mx-auto for margin auto correct
  p-3 for padding 
 
@@ -40,3 +41,33 @@ re +enter to restart mongo
  
  ..........res.status(500)..means error happing in sserver
  ....... then we create a middleware and function to handle possible error
+
+
+
+ 401 data not found
+ 400 unauthorization
+ 500 internal srver error 
+ 200 okay
+ 402 
+
+
+ then we install  npm i jsonwebtoken
+ then we  add redux toolkit
+ npm install @reduxjs/toolkit react-redux
+
+ if we login then after refresh we log out the if we want to persist as locally then we use
+ Redux persist
+ then we install persist in clientside
+ npm i redux-persist
+ then we cooncet with google account 
+ then we install firebase at client side 
+  cmd --npm install firebase
+  THEN WE CREATE .ENV INSIDE CLIENT FOLDER TO SECRET OUR API KEY
+
+
+  ._doc is used to separate password
+
+  .........to update user we install cmd in root directory
+   npm i cookie-parser
+   then import cookie-parser in index.js
+
