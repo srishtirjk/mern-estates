@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useRef, useState, useEffect } from 'react'
+import{Link} from 'react-router-dom'
 import { getDownloadURL, 
              getStorage,
              ref, 
@@ -9,7 +10,10 @@ import { app } from '../firebase.jsx'
 import { deleteUserFailure,
               deleteUserStart, 
               deleteUserSuccess,
-               updateUserFailure,
+               signOutUserFailure,
+               signOutUserStart,
+              signOutUserSuccess,
+              updateUserFailure,
                updateUserStart,
                updateUserSuccess
        } from '../../redux/user/userSlice.js'
@@ -27,6 +31,9 @@ export default function Profile() {
   const { currentUser,error,loading } = useSelector((state) => state.user);
   const dispatch=useDispatch();
   const [updateSuccess,setUpdateSuccess]=useState(false);
+  const [deleteSuccess,setDeleteSuccess]=useState(false);
+  const [logoutSuccess,setlogoutSuccess]=useState(false);
+
   console.log(formdata)
   console.log(filePerc)
   console.log(fileUploadError)
@@ -124,12 +131,28 @@ export default function Profile() {
         return;
       }
  dispatch(deleteUserSuccess(data))
+ setDeleteSuccess(true)
     }catch(error){
       dispatch(deleteUserFailure(error.message ))
 
     }
 
   }
+  const handleLogout = async ()=>{
+    try{
+      dispatch(signOutUserStart())
+      const res =await fetch('/api/auth/signout/')
+        const data =await res.json()
+        if(data.success===false){
+          dispatch(signOutUserFailure(data.message))
+          return;
+        }
+          dispatch(signOutUserSuccess(data))
+          setlogoutSuccess(true);
+    }catch(error){
+         dispatch(deleteUserFailure(error.message))
+    }
+  };
   return (
     <div className='p-3 max-w-lg mx-auto'>
         <h1 className="text-3xl font-semibold text-center my-7">
@@ -169,15 +192,22 @@ export default function Profile() {
         <input type="text" id="password"  placeholder='password'onChange={handleChange} className='border p-3 rounded-lg' />
         <button disabled={loading} type="submit" className='bg-slate-700 text-white rounded-lg p-3 
         uppercase hover:opacity-80'>{loading ?'loading...':'Update'}</button>
+        <Link className='bg-green-700 text-white p-3 rounded-lg uppercase
+         text-center hover:opacity-95'to={"/create-listing"}>Create Listing</Link>
       </form>
       <div className='flex justify-between mt-5'>
         <span onClick={ handleDeleteUser}className='cursor-pointer text-red-700'>Delete Account</span>
-        <span className='cursor-pointer text-red-700'>Sign Out</span>
+        <span onClick={handleLogout} className='cursor-pointer text-red-700'>Sign Out</span>
 
       </div>
       <p className='text-red-600 mt-5'>{error?error:""}</p>
       <p className='text-green-700 mt-5'>
          {updateSuccess?"User is updated successfully!":""}</p>
+         <p className='text-green-700 mt-5'>
+         {deleteSuccess?"User is delete successfully!":""}</p>
+         <p className='text-green-700 mt-5'>
+         {logoutSuccess?"User is logout successfully!":""}</p>
+        
     </div>
   )
 }
