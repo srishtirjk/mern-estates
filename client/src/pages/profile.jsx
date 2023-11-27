@@ -164,7 +164,7 @@ export default function Profile() {
          ref={fileRef}  hidden accept="image/*" />
         <img onClick={() => fileRef.current.click()} className=' self-center mt-2
              rounded-full h-24 cursor-pointer object-cover w-24' alt="profile"
-               src={formdata.avatar}/>
+               src={formdata.avatar||currentUser.avatar}/>
 {/* ||currentUser.avatar */}
     <p className='text-sm self-center'>
             { fileUploadError ?<span className='text-red-700'>Error Image Upload(image must be less than 2mb)
@@ -187,8 +187,8 @@ export default function Profile() {
            defaultValue={currentUser.username}*/ }
            
          </p>
-        <input type="text" id="username" placeholder='username'onChange={handleChange} className='border p-3 rounded-lg' />
-        <input type="text" id="email"  placeholder='email'onChange={handleChange} className='border p-3 rounded-lg' />
+        <input defaultValue={currentUser.username} type="text" id="username" placeholder='username'onChange={handleChange} className='border p-3 rounded-lg' />
+        <input defaultValue={currentUser.email} type="text" id="email"  placeholder='email'onChange={handleChange} className='border p-3 rounded-lg' />
         <input type="text" id="password"  placeholder='password'onChange={handleChange} className='border p-3 rounded-lg' />
         <button disabled={loading} type="submit" className='bg-slate-700 text-white rounded-lg p-3 
         uppercase hover:opacity-80'>{loading ?'loading...':'Update'}</button>
