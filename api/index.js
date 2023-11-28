@@ -30,7 +30,7 @@ app.use(cookieParser());
 //to get data from postman to see in json form
 app.use('/api/user',userRouter)
 app.use('/api/auth',authRouter)
-app.use('/api/listing',listingRouter)
+app.use('/api/listings',listingRouter)
 app.use((err,req,res,next)=>{
     const statusCode =err.statusCode ||500;
     const message =err.message ||"Internal server error"
