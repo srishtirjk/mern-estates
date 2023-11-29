@@ -1,9 +1,26 @@
 import {FaSearch} from 'react-icons/fa'
-import {Link}from 'react-router-dom'
+import {Link,useNavigate}from 'react-router-dom'
 import {useSelector} from  'react-redux'
+import { useEffect, useState } from 'react'
 export default function Header() {
   const{currentUser}=useSelector(state=>state.user)
-   
+   const [searchTerm,setSearchTerm] =useState('')
+   const navigate =useNavigate()
+   const handleSubmit=(e)=>{
+    e.preventDefault();
+    const urlParams =  new URLSearchParams(window.location.search)
+    urlParams.set('searchTerm',searchTerm)
+    const searchQuery =urlParams.toString();
+    navigate(`/search?${searchQuery}`)  
+
+   }
+   useEffect(()=>{
+    const urlParams =new URLSearchParams(location.search)
+     const searhTermFromUrl = urlParams.get('searchTerm')
+     if(searhTermFromUrl){
+      setSearchTerm(searhTermFromUrl)
+     }
+   },[location.search])
     //in h1 we use sm:text-xl for mobile user
     //same we use flex-wrap for mobile
   return (
@@ -17,10 +34,15 @@ export default function Header() {
               <span className="text-slate-700">Estate</span>
     </h3> </Link>
 
-    <form className="bg-gray-100 p-3 rounded-lg flex item-center">
+    <form onSubmit={handleSubmit}
+    className="bg-gray-100 p-3 rounded-lg flex item-center">
         <input type="text" placeholder="search...."
+        value={searchTerm}
+        onChange={(e)=>setSearchTerm(e.target.value)}
      className="bg-transparent focus:outline-none w-24 sm:w-64"/>
+    <button>
        <FaSearch className='text-slate-400'/>
+       </button>  
        </form>
         <ul className='flex gap-4'>
            <Link to='/home'>

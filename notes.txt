@@ -71,3 +71,7 @@ re +enter to restart mongo
    npm i cookie-parser
    then import cookie-parser in index.js
 
+for searching  regex is search function which search on mongo db
+$option :"i' is function which prevent that both upper case and lower case
+
+in search we use js search url method
