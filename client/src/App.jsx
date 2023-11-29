@@ -10,6 +10,7 @@ import PrivateRoute from './components/privateRoute.jsx'
 import CreateListing from './pages/CreateListing.jsx'
 import EditListing from './pages/EditListing.jsx'
 import Listing from './pages/Listing.jsx'
+import Search from './pages/Search.jsx'
  
 
 
@@ -24,7 +25,7 @@ export default function App() {
     <Route path="/signup" element={<SignUp/>}/>
     <Route path="/about" element={<About/>}/>
     <Route path="/listings/:listingId" element={<Listing/>}/>
-   
+   <Route path='/search' element={<Search/>}></Route>
     <Route element={<PrivateRoute></PrivateRoute>}>
     <Route path="/profile" element={<Profile/>}/>
     <Route path="/create-listing" element={<CreateListing/>}/>
