@@ -80,7 +80,8 @@ export default function Listing() {
              </SwiperSlide>
            ))}
          </Swiper>
-         <div className='fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer'>
+         <div className='fixed top-[13%] right-[3%] z-10 border rounded-full 
+         w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer'>
             <FaShare
               className='text-slate-500'
               onClick={() => {
@@ -101,8 +102,8 @@ export default function Listing() {
             <p className='text-2xl font-semibold'>
               {listing.name} - ₹{' '}
               {listing.offer
-                ? listing.discountPrice.toLocaleString('en-US')
-                : listing.regularPrice.toLocaleString('en-US')}
+                ? listing.discountPrice.toLocaleString('en-IN')
+                : listing.regularPrice.toLocaleString('en-IN')}
               {listing.type === 'rent' && ' / month'}
             </p>
             <p className='flex items-center mt-6 gap-2 text-slate-600  text-sm'>

@@ -268,7 +268,7 @@ import {
                   className="p-3 border   border-gray-300 rounded-lg"
                   type="number"
                   id="regularPrice"
-                  min='3000' max='100000' required />
+                  min='3000' max='1000000000' required />
                 <div className="flex  flex-col items-center">
                   <p >Regular price</p>
                   <span className="text-xs">  ₹/month</span>
@@ -280,7 +280,7 @@ import {
                     <input onChange={handleChange}
                       value={formdata.discountPrice}
                       className="p-3 border border-gray-300 rounded-lg" type="number"
-                      id="discountPrice" min='0' max='10000' required />
+                      id="discountPrice" min='0' max='100000000' required />
   
                     <div className="flex  flex-col items-center"> <p>Discounted price</p>
                       <span className="text-xs">  ₹/month</span>
