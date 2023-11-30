@@ -254,7 +254,7 @@ export default function CreateListing() {
                 className="p-3 border   border-gray-300 rounded-lg"
                 type="number"
                 id="regularPrice"
-                min='3000' max='100000' required />
+                min='3000' max='100000000' required />
               <div className="flex  flex-col items-center">
                 <p >Regular price</p>
                 <span className="text-xs">  ₹/month</span>
@@ -266,7 +266,7 @@ export default function CreateListing() {
                   <input onChange={handleChange}
                     value={formdata.discountPrice}
                     className="p-3 border border-gray-300 rounded-lg" type="number"
-                    id="discountPrice" min='0' max='10000' required />
+                    id="discountPrice" min='0' max='1000000' required />
 
                   <div className="flex  flex-col items-center"> <p>Discounted price</p>
                     <span className="text-xs">  ₹/month</span>
@@ -281,8 +281,10 @@ export default function CreateListing() {
             </span>
           </p>
           <div className=" flex gap-4">
-            <input onClick={(e) => setFiles(e.target.files)} className="p-3 border border-gray-300 rounded w-full" type="file"
-              id="images" accept='image/*' multiple />
+            <input onChange={(e) => setFiles(e.target.files)}
+             className="p-3 border border-gray-300 rounded
+              w-full" type="file" id="images" accept='image/*'
+               multiple />
             <button disabled={uploading} type="button" onClick={handleImageButton} className="p-3 text-green-700 border rounded uppercase
                    hover:shadow-lg disabled:opacity:80 border-green-700 semibold" >{uploading ? "Uploading..." : "Upload"}</button>
 
