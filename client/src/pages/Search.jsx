@@ -8,6 +8,7 @@ export default function Search() {
     const navigate=useNavigate()
     const[loading,setLoading] =useState(false);
     const [listing,setListing] =useState([])
+    const[showMore,setShowmore]=useState(false)
     const[sidebardata,setSidebardata]=useState({
         searchTerm:'',
         type:'all',
@@ -17,9 +18,7 @@ export default function Search() {
            sort:'created_at',
             order:'desc',
     });
-    console.log(loading)
-    console.log(sidebardata)
-    console.log(listing)
+   
     useEffect(()=>{
       const urlParams =new URLSearchParams(location.search);
       const searchTermFromUrl =urlParams.get('searchTerm');
@@ -48,12 +47,15 @@ export default function Search() {
     })
   }
   const fetchListings=async()=>{
-
+      setShowmore(false)
     setLoading(true);
     const searchQuery =urlParams.toString();
    // const res =await fetch(`/api/listings/get?${searchQuery}`)
     const res = await fetch(`/api/listings/get?${searchQuery}`);
     const data =await res.json();
+    if(data.length>9){
+      setShowmore(true)
+    }
     setListing(data)
     setLoading(false);
 
@@ -111,6 +113,25 @@ navigate(`/search?${searchQuery}`)
 
 }
 
+const onShowMoreClick=async()=>{
+  const numberOfListings =listing.length;
+  const startIndex =numberOfListings;
+  const urlParams =new URLSearchParams(location.search);
+  urlParams.set('startIndex',startIndex)
+  const searchQuery = urlParams.toString();
+
+  const res =await fetch(`/api/listings/get?${searchQuery}`)
+  const data =await res.json();
+  if(data.length<9){
+    setShowmore(false)
+  
+  }
+  else{
+    setShowmore(false)
+  }
+  setListing([ ...listing, ...data])
+
+}
 
   return (
     <div className="flex flex-col md:flex-row">
@@ -204,7 +225,11 @@ navigate(`/search?${searchQuery}`)
             listing={listing}/>
           ))
         }
-
+{showMore &&(
+  <button className='text-green-700 hover:underline p-7 texxt-center  w-full'onClick={onShowMoreClick}>
+  show more  
+  </button>
+)}
        </div>
      </div>
     </div>
